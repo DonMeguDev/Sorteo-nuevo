@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+body {
+    background-color: #6227E3;
+    font-family: 'Muli', sans-serif;
+    padding: 10vh 0;
+    height: 80vh;
+}
+
+.container {
+    height: inherit;
+    width: inherit;
+    display: grid;
+    grid-template-columns: 33vw 34vw 33vw;
+    grid-template-rows: repeat(3, 33vh);
+}
+
+textarea {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    border-radius: 15px;
+    margin-right: 2vw;
+    color: #000;
+    padding: 10px;
+    resize: none;
+    overflow-y: scroll;
+    scrollbar-width: 0;
+}
+
+textarea::-webkit-scrollbar {
+    display: none;
+}
+
+.ganador {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    place-self: center center;
+    display: flex;
+    flex-direction: row;
+}
+
+.participantes {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    place-self: center center;
+    margin-right: 2vw;
+}
+
+.botones {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    place-self: center center;
+}
+
+.lista-ganador {
+    height: 20vh;
+    margin: 1vh;
+    background-color: #000;
+    border-radius: 15px;
+    width: 21vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    font-size: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px;
+    visibility: hidden;
+}
+
+h3 {
+    font-size: 30px
+}
+
+button {
+    border-radius: 4px;
+    background-color: #000;
+    width: 21vw;
+    margin: 20px;
+    padding: 20px 30px;
+    box-shadow: inset 0 0 0 0 #fff;
+    font-size: 30px;
+    transition: ease-out 0.3s;
+}
+
+#botonRespaldo {
+    width: 10vw;
+    font-size: 15px;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: inset 30vw 0 0 0 #333333;
+}
