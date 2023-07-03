@@ -71,7 +71,7 @@ function realizarSorteo() {
         }, 4000);
         setTimeout(() => {
             clearInterval(timer3);
-            if ((Math.floor(Math.random() * 3) != 0) && clicks > 0) {
+            if ((Math.floor(Math.random() * 4) != 0) && clicks > 0) {
               clicks--;
               rodillo3.innerHTML = '';
               goblin.style.visibility = 'visible';
