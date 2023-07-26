@@ -6,7 +6,8 @@ const rodillo1              = document.getElementById('rodillo1');
 const rodillo2              = document.getElementById('rodillo2');
 const rodillo3              = document.getElementById('rodillo3');
 const numeroParticipantes   = document.getElementById('participantes');
-let clicks = 5;
+
+let clicks = (Math.floor(Math.random() * 3)) + 1;
 
 let nombres = '';
 
@@ -26,10 +27,12 @@ function contarParticipantes(cantidad) {
 }
 
 botonGanador.addEventListener('click', () => {
+    goblin.style.visibility = 'hidden';
     realizarSorteo();
 });
 
 botonRespaldo.addEventListener('click', () => {
+    goblin.style.visibility = 'hidden';
     rodillo1.innerHTML = '';
     rodillo3.innerHTML = '';
     const timer1 = setInterval(() => {
@@ -39,6 +42,7 @@ botonRespaldo.addEventListener('click', () => {
     setTimeout(() => {
             clearInterval(timer1);
     }, 2000);
+    clicks = (Math.floor(Math.random() * 3)) + 1;
 });
 
 function sortear() {
@@ -71,14 +75,14 @@ function realizarSorteo() {
         }, 4000);
         setTimeout(() => {
             clearInterval(timer3);
-            if (((Math.floor(Math.random() * 3) != 0) && (clicks > 0)) || (clicks > 4)) {
+            if (clicks > 0) {
               clicks--;
               rodillo3.innerHTML = '';
               goblin.style.visibility = 'visible';
             } else {
               goblin.style.visibility = 'hidden';
               rodillo3.innerHTML = nombres[ganador];
-              clicks = 5;
+              clicks = (Math.floor(Math.random() * 3)) + 1;
             }
         }, 6000);
     } else {
