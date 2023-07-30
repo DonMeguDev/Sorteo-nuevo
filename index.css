@@ -73,7 +73,7 @@ textarea::-webkit-scrollbar {
 }
 
 span {
-    font-size: 20px;
+    font-size: 30px;
 }
 
 h2 {
@@ -105,4 +105,8 @@ button {
 button:hover {
     cursor: pointer;
     box-shadow: inset 30vw 0 0 0 #333333;
+}
+
+#goblin {
+    max-height: 35%;
 }
