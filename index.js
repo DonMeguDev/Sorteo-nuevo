@@ -6,7 +6,9 @@ const rodillo1              = document.getElementById('rodillo1');
 const rodillo2              = document.getElementById('rodillo2');
 const rodillo3              = document.getElementById('rodillo3');
 const numeroParticipantes   = document.getElementById('participantes');
-let clicks = 5;
+
+let clicks = (Math.floor(Math.random() * 3)) + 1;
+goblin.style.display = 'none';
 
 let nombres = '';
 
@@ -26,10 +28,12 @@ function contarParticipantes(cantidad) {
 }
 
 botonGanador.addEventListener('click', () => {
+    goblin.style.display = 'none';
     realizarSorteo();
 });
 
 botonRespaldo.addEventListener('click', () => {
+    goblin.style.display = 'none';
     rodillo1.innerHTML = '';
     rodillo3.innerHTML = '';
     const timer1 = setInterval(() => {
@@ -39,6 +43,7 @@ botonRespaldo.addEventListener('click', () => {
     setTimeout(() => {
             clearInterval(timer1);
     }, 2000);
+    clicks = (Math.floor(Math.random() * 3)) + 1;
 });
 
 function sortear() {
@@ -48,7 +53,7 @@ function sortear() {
 function realizarSorteo() {
     if(nombres.length > 0){
         let ganador = sortear();
-        goblin.style.visibility = 'hidden';
+        goblin.style.display = 'none';
         const timer1 = setInterval(() => {
             const nombre = sortear();
             rodillo1.innerHTML = nombres[nombre];
@@ -71,14 +76,14 @@ function realizarSorteo() {
         }, 4000);
         setTimeout(() => {
             clearInterval(timer3);
-            if ((Math.floor(Math.random() * 3) != 0) && clicks > 0) {
+            if (clicks > 0) {
               clicks--;
               rodillo3.innerHTML = '';
-              goblin.style.visibility = 'visible';
+              goblin.style.display = 'flex';
             } else {
-              goblin.style.visibility = 'hidden';
+              goblin.style.display = 'none';
               rodillo3.innerHTML = nombres[ganador];
-              clicks = 5;
+              clicks = (Math.floor(Math.random() * 3)) + 1;
             }
         }, 6000);
     } else {
