@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorteo GOTH</title>
-  <link rel="stylesheet" href="./index.css">
-  <script type="module" src="./index.js"></script>
+  <link rel="stylesheet" href="./css/index.css">
+  <script type="module" src="./js/index.js"></script>
 </head>
+
 <body>
-    <div class="container">
-      <textarea id="textarea"></textarea>
-      <div class="ganador">
-        <div class="lista-ganador">
-          <span id="rodillo1"></span>
-        </div>
-        <div class="lista-ganador">
-          <span id="rodillo2"></span>
-        </div>
-        <div class="lista-ganador">
-          <img id="goblin" src="https://cdn.discordapp.com/attachments/284175884590514177/1133966116620869683/goblin1g.png">
-          <span id="rodillo3"></span>
-        </div>
+  <div class="container">
+    <textarea id="textarea"></textarea>
+    <div class="ganador">
+      <div class="lista-ganador">
+        <span id="rodillo1"></span>
       </div>
-      <div class="participantes">
-        <h3 id="participantes">Participantes</h3>
+      <div class="lista-ganador">
+        <span id="rodillo2"></span>
       </div>
-      <div class="botones">
-        <button id="botonGanador">Lanzar</button>
-        <button id="botonRespaldo">Respaldo</button>
+      <div class="lista-ganador">
+        <img id="goblin" src="./img/goblin1g.png">
+        <span id="rodillo3"></span>
       </div>
     </div>
-  </body>
+    <div class="participantes">
+      <h3 id="participantes">Participantes</h3>
+    </div>
+    <div class="botones">
+      <button id="botonGanador">Lanzar</button>
+      <button id="botonRespaldo">Respaldo</button>
+    </div>
+  </div>
+</body>
+
 </html>
