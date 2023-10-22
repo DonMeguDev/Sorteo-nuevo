@@ -1,14 +1,13 @@
 const textarea = document.getElementById('textarea');
 const botonRespaldo = document.getElementById('botonRespaldo');
-const goblin = document.getElementById('goblin');
 const botonGanador = document.getElementById('botonGanador');
 const rodillo1 = document.getElementById('rodillo1');
 const rodillo2 = document.getElementById('rodillo2');
 const rodillo3 = document.getElementById('rodillo3');
 const numeroParticipantes = document.getElementById('participantes');
+const alertMsg = $("#alertMessage");
 
 let clicks = (Math.floor(Math.random() * 3)) + 1;
-goblin.style.display = 'none';
 
 let nombres = '';
 
@@ -28,12 +27,10 @@ function contarParticipantes(cantidad) {
 }
 
 botonGanador.addEventListener('click', () => {
-    goblin.style.display = 'none';
     realizarSorteo();
 });
 
 botonRespaldo.addEventListener('click', () => {
-    goblin.style.display = 'none';
     rodillo1.innerHTML = '';
     rodillo3.innerHTML = '';
     const timer1 = setInterval(() => {
@@ -53,7 +50,6 @@ function sortear() {
 function realizarSorteo() {
     if (nombres.length > 0) {
         let ganador = sortear();
-        goblin.style.display = 'none';
         const timer1 = setInterval(() => {
             const nombre = sortear();
             rodillo1.innerHTML = nombres[nombre];
@@ -79,7 +75,7 @@ function realizarSorteo() {
             if (clicks > 0) {
                 clicks--;
                 rodillo3.innerHTML = '';
-                goblin.style.display = 'flex';
+                showGoblin("rodillo3");
             } else {
                 goblin.style.display = 'none';
                 rodillo3.innerHTML = nombres[ganador];
@@ -87,8 +83,46 @@ function realizarSorteo() {
             }
         }, 6000);
     } else {
-        rodillo1.innerHTML = '';
-        rodillo2.innerHTML = 'No participantes';
-        rodillo3.innerHTML = '';
+        alertMsg.show(); //Shows Bootstrap alert
+        showNicoNo("rodillo1");
+        showNicoNo("rodillo2");
+        showNicoNo("rodillo3");
     }
 }
+
+function expandTextarea(id) {
+    document.getElementById(id).addEventListener('keyup', function () {
+        this.style.overflow = 'hidden';
+        // Avoid infinite size
+        if (this.scrollHeight >= 348) {
+            return;
+        }
+        this.style.height = 0;
+        this.style.height = this.scrollHeight + 'px';
+    }, false);
+}
+
+function showNicoNo(id) {
+    let element = document.getElementById(id);
+    if (element == null) {
+        console.error("No se pudo encontrar elemento [%s] para añadir un goblin", id)
+        return;
+    }
+    document.getElementById(id).innerHTML = '<img id="goblin" src="./img/nico-no.gif">';
+}
+
+function showGoblin(id) {
+    let element = document.getElementById(id);
+    if (element == null) {
+        console.error("No se pudo encontrar elemento [%s] para añadir un goblin", id)
+        return;
+    }
+    document.getElementById(id).innerHTML = '<img id="goblin" src="./img/goblin1g.png">';
+}
+
+expandTextarea('textarea');
+
+alertMsg.on("close.bs.alert", function () {
+    alertMsg.hide();
+    return false;
+});
